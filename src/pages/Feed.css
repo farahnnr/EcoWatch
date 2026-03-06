@@ -1,0 +1,32 @@
+.feed-container {
+    padding: var(--spacing-md);
+    padding-top: 0;
+}
+
+.feed-header {
+    margin-bottom: var(--spacing-lg);
+}
+
+.feed-header h2 {
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, white 0%, var(--accent-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 4px;
+}
+
+.feed-header p {
+    font-size: 0.9rem;
+}
+
+.feed-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.empty-state {
+    padding: var(--spacing-xl);
+    text-align: center;
+    color: var(--text-muted);
+}

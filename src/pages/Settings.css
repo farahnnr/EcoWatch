@@ -1,0 +1,116 @@
+.settings-container {
+    padding: var(--spacing-md);
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.settings-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-sm);
+}
+
+.settings-header h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.settings-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.settings-section {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: var(--spacing-sm);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-title h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing-md);
+}
+
+.setting-info {
+    flex: 1;
+}
+
+.setting-info h4 {
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+    color: var(--text-primary);
+}
+
+.setting-info p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.toggle-switch {
+    width: 50px;
+    height: 28px;
+    border-radius: 14px;
+    background-color: var(--border-color);
+    position: relative;
+    transition: background-color 0.3s ease;
+    padding: 2px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.toggle-switch.active {
+    background-color: var(--accent-primary);
+}
+
+.toggle-slider {
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-switch.active .toggle-slider {
+    transform: translateX(22px);
+}
+
+.settings-select {
+    padding: 8px 12px;
+    width: auto;
+    max-width: 150px;
+}
+
+.settings-footer {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}

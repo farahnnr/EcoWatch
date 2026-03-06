@@ -1,0 +1,153 @@
+.profile-container {
+    padding: var(--spacing-md);
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-sm);
+}
+
+.profile-header h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.back-button {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-xl) var(--spacing-md);
+    text-align: center;
+}
+
+.profile-avatar-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-primary) 0%, #059669 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 2rem;
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+    margin-bottom: var(--spacing-md);
+    border: 3px solid var(--bg-primary);
+}
+
+.profile-name-display {
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+}
+
+.profile-country-display {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.profile-form {
+    padding: var(--spacing-lg) var(--spacing-md);
+}
+
+.form-section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-section-header.push-top {
+    margin-top: var(--spacing-lg);
+}
+
+.form-section-header h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.field-hint {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.disabled-field {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.link-explanation {
+    background: rgba(16, 185, 129, 0.1);
+    border-left: 3px solid var(--accent-primary);
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: var(--spacing-md);
+}
+
+.link-explanation p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.phone-input-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.phone-prefix {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-right: none;
+    padding: 12px 14px;
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.phone-field {
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.save-button {
+    margin-top: var(--spacing-xl);
+    height: 48px;
+}
+
+.success-message {
+    margin-top: var(--spacing-md);
+    padding: 12px;
+    background: rgba(16, 185, 129, 0.2);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: var(--radius-md);
+    color: #34d399;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* Re-using typing indicator but sizing it smaller */
+.typing-indicator.small span {
+    width: 5px;
+    height: 5px;
+    background-color: white;
+}
