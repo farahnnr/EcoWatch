@@ -1,150 +1,101 @@
-import React, { useState } from 'react';
-import { useAppContext } from '../context/AppContext';
-import { Leaf, LogIn, UserPlus } from 'lucide-react';
-import './Auth.css';
+import React, { useState } from "react";
+import { useAppContext } from "../context/AppContext";
 
 const Auth = () => {
-    const { login, signup, aseanCountries } = useAppContext();
-    const [isLogin, setIsLogin] = useState(true);
 
-    // Form State
-    const [name, setName] = useState('');
-    const [password, setPassword] = useState('');
-    const [country, setCountry] = useState('id'); // Default Indonesia
-    const [error, setError] = useState('');
+  const { login, signup, aseanCountries } = useAppContext();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        setError('');
+  const [isLogin, setIsLogin] = useState(true);
 
-        if (isLogin) {
-            const userId = name.trim();
-            if (!userId || !password) {
-                setError('Please enter User ID / Name and password');
-                return;
-            }
-            const success = login(userId, password);
-            if (!success) setError('Invalid credentials. Check your User ID and password.');
-        } else {
-            if (!name.trim() || !password) {
-                setError('Please provide a name and a password');
-                return;
-            }
-            signup(name, country, password);
-        }
-    };
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [country, setCountry] = useState("my");
 
-    return (
-        <div className="auth-container">
-            <div className="auth-card glass-panel animate-fade-in">
-                <div className="auth-header">
-                    <div className="auth-logo">
-                        <Leaf size={40} color="var(--accent-primary)" />
-                    </div>
-                    <h1 className="auth-title">EcoWatch</h1>
-                    <p className="auth-subtitle">ASEAN Citizen Science</p>
-                </div>
+  const [error, setError] = useState("");
 
-                <div className="auth-tabs">
-                    <button
-                        className={`auth-tab ${isLogin ? 'active' : ''}`}
-                        onClick={() => { setIsLogin(true); setError(''); setPassword(''); }}
-                        type="button"
-                    >
-                        Log In
-                    </button>
-                    <button
-                        className={`auth-tab ${!isLogin ? 'active' : ''}`}
-                        onClick={() => { setIsLogin(false); setError(''); setPassword(''); }}
-                        type="button"
-                    >
-                        Sign Up
-                    </button>
-                </div>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setError("");
 
-                <form onSubmit={handleSubmit} className="auth-form">
-                    {error && <div className="auth-error animate-fade-in">{error}</div>}
+    if (isLogin) {
+      const success = login(name, password);
 
-                    {isLogin ? (
-                        <>
-                            <div className="form-group">
-                                <label>User ID or Name (Demo: u1, u2...)</label>
-                                <input
-                                    type="text"
-                                    className="input-field"
-                                    placeholder="Enter User ID or Name"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    required
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>Password (Demo: password123)</label>
-                                <input
-                                    type="password"
-                                    className="input-field"
-                                    placeholder="Enter your password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    required
-                                />
-                            </div>
-                        </>
-                    ) : (
-                        <>
-                            <div className="form-group">
-                                <label>Display Name</label>
-                                <input
-                                    type="text"
-                                    className="input-field"
-                                    placeholder="Enter your name"
-                                    value={name}
-                                    onChange={(e) => setName(e.target.value)}
-                                    required
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label>ASEAN Country</label>
-                                <select
-                                    className="input-field select-field"
-                                    value={country}
-                                    onChange={(e) => setCountry(e.target.value)}
-                                >
-                                    {aseanCountries.map(c => (
-                                        <option key={c.id} value={c.id}>
-                                            {c.flag} {c.name}
-                                        </option>
-                                    ))}
-                                </select>
-                            </div>
-                            <div className="form-group">
-                                <label>Password</label>
-                                <input
-                                    type="password"
-                                    className="input-field"
-                                    placeholder="Create a password"
-                                    value={password}
-                                    onChange={(e) => setPassword(e.target.value)}
-                                    required
-                                />
-                            </div>
-                        </>
-                    )}
+      if (!success) {
+        setError("Invalid username or password");
+      }
 
-                    <button type="submit" className="primary-button auth-submit">
-                        {isLogin ? (
-                            <><LogIn size={18} /> Enter Platform</>
-                        ) : (
-                            <><UserPlus size={18} /> Join EcoWatch</>
-                        )}
-                    </button>
-                </form>
-            </div>
+    } else {
+      if (!name || !password) {
+        setError("Please fill all fields");
+        return;
+      }
 
-            <div className="auth-bg-decor shape-1 animate-pulse-glow"></div>
-            <div className="auth-bg-decor shape-2" style={{ animationDelay: '1s' }}></div>
+      signup(name, country, password);
+    }
+  };
+
+  return (
+    <div style={{maxWidth:400,margin:"80px auto",padding:20}}>
+
+      <h2 style={{textAlign:"center"}}>EcoWatch</h2>
+
+      <div style={{display:"flex",justifyContent:"center",gap:10,marginBottom:20}}>
+        <button onClick={()=>setIsLogin(true)}>Login</button>
+        <button onClick={()=>setIsLogin(false)}>Sign Up</button>
+      </div>
+
+      <form onSubmit={handleSubmit}>
+
+        <div style={{marginBottom:10}}>
+          <input
+            type="text"
+            placeholder="Username"
+            value={name}
+            onChange={(e)=>setName(e.target.value)}
+            style={{width:"100%",padding:10}}
+          />
         </div>
-    );
+
+        {!isLogin && (
+          <div style={{marginBottom:10}}>
+            <select
+              value={country}
+              onChange={(e)=>setCountry(e.target.value)}
+              style={{width:"100%",padding:10}}
+            >
+              {aseanCountries.map(c=>(
+                <option key={c.id} value={c.id}>
+                  {c.flag} {c.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
+        <div style={{marginBottom:10}}>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e)=>setPassword(e.target.value)}
+            style={{width:"100%",padding:10}}
+          />
+        </div>
+
+        {error && (
+          <div style={{color:"red",marginBottom:10}}>
+            {error}
+          </div>
+        )}
+
+        <button style={{width:"100%",padding:10}}>
+          {isLogin ? "Login" : "Create Account"}
+        </button>
+
+      </form>
+
+    </div>
+  );
 };
 
 export default Auth;

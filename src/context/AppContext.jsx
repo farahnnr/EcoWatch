@@ -28,14 +28,20 @@ export const AppProvider = ({ children }) => {
     }, []);
 
     const login = (userId, password) => {
-        const user = users.find(u => u.id === userId || u.name === userId);
-        if (user && user.password === password) {
-            setCurrentUser(user);
-            localStorage.setItem('ecowatch_user_id', user.id);
-            return true;
-        }
-        return false;
-    };
+    const user = users.find(
+        u =>
+            u.id === userId ||
+            u.name.toLowerCase() === userId.toLowerCase()
+    );
+
+    if (user && user.password === password) {
+        setCurrentUser(user);
+        localStorage.setItem('ecowatch_user_id', user.id);
+        return true;
+    }
+
+    return false;
+};
 
     const signup = (name, countryId, password) => {
         const newUser = {
