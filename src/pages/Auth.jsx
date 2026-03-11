@@ -3,7 +3,7 @@ import { useAppContext } from "../context/AppContext";
 import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
-import "./auth.css"; 
+import "./Auth.css"; 
 
 const Auth = () => {
   const { aseanCountries, setCurrentUser, login: contextLogin } = useAppContext();
